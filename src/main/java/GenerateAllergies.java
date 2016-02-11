@@ -20,17 +20,17 @@ public class GenerateAllergies {
           Map<String, Object> model = new HashMap<String, Object>();
           model.put("template", "templates/detector.vtl");
 
-          // String inputString = request.queryParams("inputString");
-          // Integer inputInteger = Integer.parseInt(inputString);
-          // String result = generateChange(inputInteger);
-          //
-          // model.put("inputInteger", inputInteger);
-          // model.put("result", result);
+          String inputString = request.queryParams("inputString");
+          Integer inputInteger = Integer.parseInt(inputString);
+          String allergies = generateAllergies(inputInteger);
+
+          model.put("inputInteger", inputInteger);
+          model.put("allergies", allergies);
           return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
       }
 
-  public static Object[] generateAllergies (Integer inputInteger) {
+  public static String generateAllergies (Integer inputInteger) {
 
     Integer input = inputInteger;
     ArrayList allergies = new ArrayList();
@@ -73,7 +73,7 @@ public class GenerateAllergies {
       input -= 1;
     }
 
-    return allergies.toArray();
+    return allergies.toString();
 
     // Integer input = inputInteger;
     // Integer quarterCount = 0;
