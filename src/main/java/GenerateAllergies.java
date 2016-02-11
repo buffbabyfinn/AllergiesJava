@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import spark.ModelAndView;
@@ -29,10 +30,50 @@ public class GenerateAllergies {
         }, new VelocityTemplateEngine());
       }
 
-  public static String[] generateAllergies (Integer inputInteger) {
+  public static Object[] generateAllergies (Integer inputInteger) {
 
-    String[] allergies = {"cats"};
-    return  allergies;
+    Integer input = inputInteger;
+    ArrayList allergies = new ArrayList();
+
+    while (input >= 128) {
+      allergies.add("cats");
+      input -= 128;
+    }
+
+    while (input >= 64) {
+      allergies.add("pollen");
+      input -= 64;
+    }
+
+    while (input >= 32) {
+      allergies.add("chocolate");
+      input -= 32;
+    }
+
+    while (input >= 16) {
+      allergies.add("tomatoes");
+      input -= 16;
+    }
+
+    while (input >= 8) {
+      allergies.add("strawberries");
+      input -= 8;
+    }
+
+    while (input >= 4) {
+      allergies.add("shellfish");
+      input -= 4;
+    }
+    while (input >= 2) {
+      allergies.add("peanuts");
+      input -= 2;
+    }
+    while (input >= 1) {
+      allergies.add("eggs");
+      input -= 1;
+    }
+
+    return allergies.toArray();
 
     // Integer input = inputInteger;
     // Integer quarterCount = 0;
